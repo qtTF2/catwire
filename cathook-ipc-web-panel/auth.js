@@ -75,14 +75,14 @@ class SimpleAuth
     {
         if (req.body.password === this.password)
         {
-            console.log(`Auth failed: Client ${req.ip} auth success on ${req.url} by password ${req.body.password}`);
+            console.log(`Auth success: Client ${req.ip} authenticated on ${req.url} by password ${req.body.password}`);
             req.session.auth = 1;
             res.status(200).end();
         }
         else
         {
             console.log(`Auth failed: Client ${req.ip} failed auth on ${req.url} by password ${req.body.password}`);
-            res.status(403).end();
+            res.status(403).end('Invaild password');
         }
     }
     storeAPIKey(path)
