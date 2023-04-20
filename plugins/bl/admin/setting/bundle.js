@@ -11703,11 +11703,8 @@ function refreshComplete() {
 		console.log(b);
 		for (var i in b.bots) {
 			count++;
+			addClientRow(i)
 		}
-	
-		if (b.state == 5 && b.ipc) {
-		addClientRow(i)
-	        }
 	
 		last_count = count;
 	})
