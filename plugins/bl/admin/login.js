@@ -11449,8 +11449,13 @@ const request = require('browser-request');
                 password: password
             }
         }, (e, r, b) => {
-            console.log(b);
+        if (r.statusCode == 403) return new swal({title: "Error", icon: "error", text: "Invaild password. Did you forgot your password?", timer: 3000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
+        if (r.statusCode == 200) return location.href = '/pages/admin';
+            /*console.log(r);
+            console.log(e);
+            console.log(b);*/
         });
     });
+
 
 },{"browser-request":2,"format-duration":3,"jquery":4}]},{},[6]);
