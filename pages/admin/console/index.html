@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
@@ -165,8 +167,8 @@
 
 <div class="form-group">
 <label for="exampleSelectBorderWidth2">Client</label>
-<select class="custom-select form-control-border border-width-2" id="exampleSelectBorderWidth2">
-<option>All</option>
+<select class="custom-select form-control-border border-width-2" id="clients">
+<option disabled>Select one</option>
 </select>
  </div>
 
@@ -183,9 +185,8 @@
 <h3 class="card-title">Console</h3>
 </div> 
 
-<div id="console-log" class="logArea">
-<!-- <span class="console-date"><span id="time"> -->
-</span></span><div id="line"></span><br>
+<div id="terminal">
+<pre style="color: rgb(255, 255, 255)" id="line"></span>
 
 </div>
 </div>
@@ -193,7 +194,7 @@
 <div class="input-group">
 <input type="text" id="console" value="" class="form-control" data-focus="" placeholder="command for client">
 <span class="input-group-btn">
-<input class="btn btn-secondary rounded-0" type="submit" value="Send" id="console-send"></span>
+<input class="btn btn-secondary rounded-0" type="submit" value="Send" id="console-button"></span>
 </div>
 
     </div>
@@ -214,7 +215,7 @@
     <strong>Cathook IPC Panel using <a href="https://adminlte.io">AdminLTE</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Admin Panel Version</b> 3.2.0
+      <b>Catwire</b> <span id="ver"><span id="ver2">Unknown</span>
     </div>
   </footer>
 </div>
@@ -234,25 +235,10 @@
 <script src="/plugins/bl/admin/console/con.js"></script>
 <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="/plugins/toastr/toastr.min.js"></script>
-   <!--    <script src="_/plugins/console/tinycon.min.js"></script>
-   <script src="/plugins/console/ansi_up.js"></script>
-<script src="/plugins/console/socket.io.js"></script>
-    <script src="/plugins/console/app.js"></script>
-    <script type="text/javascript">
-        var socket = new io.connect('/d664c19f93bc812c6680673cfecb3709', {
-            path: '/socket.io',
-            transports: ['websocket']
-        });
 
-        window.load = App.init({
-            socket: socket,
-            container: document.getElementsByClassName('log')[0],
-            filterInput: document.getElementsByClassName('query')[0],
-            pauseBtn: document.getElementsByClassName('btn-pause')[0],
-            topbar: document.getElementsByClassName('topbar')[0],
-            body: document.getElementsByTagName('body')[0]
-        });
-    </script> -->
+<!-- MISC PLUGIN -->
+<script src="/plugins/update/version.js"></script>
+
 <!-- jQuery Mapael -->
 <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="/plugins/raphael/raphael.min.js"></script>

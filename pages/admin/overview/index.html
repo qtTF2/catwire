@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
@@ -214,7 +215,7 @@ System Information
 </h3>
 </div>
 <div class="card-body">
-You are running Modern Admin Panel <b>0.0.1</b> (AdminLTE Build: <b>3.2.0</b>). Your panel is currently up-to-date.
+You are running Catwire <b><span id="ver2">Unknown</span></b> (AdminLTE Build: <b>3.2.0</b>). Your panel is currently up-to-date.
 </div>
 </div>
 
@@ -234,7 +235,7 @@ You are running Modern Admin Panel <b>0.0.1</b> (AdminLTE Build: <b>3.2.0</b>). 
     <strong>Cathook IPC Panel using <a href="https://adminlte.io">AdminLTE</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Admin Panel Version</b> 3.2.0
+      <b>Catwire</b> <span id="ver">Unknown</span>
     </div>
   </footer>
 </div>
@@ -252,6 +253,10 @@ You are running Modern Admin Panel <b>0.0.1</b> (AdminLTE Build: <b>3.2.0</b>). 
 
 <!-- PAGE PLUGINS -->
 <script src="/plugins/bl/admin/bundle.js"></script>
+
+<!-- MISC PLUGIN -->
+<script src="/plugins/update/version.js"></script>
+
 <!-- jQuery Mapael -->
 <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="/plugins/raphael/raphael.min.js"></script>

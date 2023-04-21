@@ -111,7 +111,7 @@
                with font-awesome or any other icon font library -->
           </li>
           <li class="nav-item">
-            <a class="nav-link active">
+            <a href="/pages/track" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Bot Tracking
@@ -135,13 +135,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Bot Tracking</h1>
-            <p>Track your bots and lets users see if they have met with a real bot of yours.</p>
+            <h1 class="m-0">FAQ</h1>
+            <p>Commonly asked questions</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Bot Tracking</li>
+              <li class="breadcrumb-item active">FAQ</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -150,50 +150,38 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-    <div class="card card-primary card-outline">
+   <section class="content">
+<div class="row">
+<div class="col-12" id="accordion">
+<div class="card card-primary card-outline">
+<a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
 <div class="card-header">
-<div class="card-tools">
-<div class="input-group input-group-sm" style="width: 150px;">
-<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-<div class="input-group-append">
-<button type="submit" class="btn btn-default">
-<i class="fas fa-search"></i>
-</button>
+<h4 class="card-title w-100">
+1. How can I get immunity from your bots?
+</h4>
+</div>
+</a>
+<div id="collapseOne" class="collapse show" data-parent="#accordion">
+<div class="card-body">
+Player immunities are based on how the bot hoster feels. If they offer any player immunity please list them here and how they can contact the bot hoster for them to make their bots not target you.
 </div>
 </div>
 </div>
-<h3 class="card-title">Bot List</h3>
-</div> 
-        <table class="table table-hover text-nowrap" id="clients">
-            <thead>
-            <tr id="spanfix">
-                <td scope="row">Name</td>
-                <td scope="row">State</td>
-                <td scope="row">Steam Profile</td>
-                <td scope="row">Status</td>
-                <td scope="row">Total Score</td>
-                <td scope="row">Current Score</td>
-                <td scope="row">Connected</td>
-                <td scope="row">Team</td>
-                <td scope="row">Class</td>
-                <td scope="row">Health</td>
-                <td scope="row">IP:Port</td>
-                <td scope="row">Map</td>
-                <td scope="row">Players</td>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-        </p>
-    </div>
+<div class="card card-warning card-outline">
+<a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
+<div class="card-header">
+<h4 class="card-title w-100">
+2. What is Catwire?
+</h4>
+</div>
+</a>
+<div id="collapseTwo" class="collapse" data-parent="#accordion">
+<div class="card-body">
+Thats the name of the modern and sily IPC panel for Cathook IPC. It contains features that simply doesnt exist in original Cathook IPC. As you can see the bot hoster has setup Catwire on their server please let them know to edit this file.
 </div>
 </div>
 </div>
-</div>
-    </section>
+</section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

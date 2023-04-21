@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
@@ -170,32 +171,87 @@
 <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-1" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">About</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-2" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Settings</a>
+<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-2" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Paths</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-3" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Mounts</a>
+<a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-3" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Nodes</a>
+
 </li>
 </ul>
 </div>
 </div>
 <div class="tab-content" id="custom-tabs-four-tabContent">
 <div class="tab-pane fade show active" id="custom-tabs-1" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+  <div class="card card-primary card-outline">
+<div class="card-header">
+<h5 class="card-title m-0">Server Information</h5>
+</div>
 <div class="card-body">
 <dl class="row">
-<dt class="col-sm-4">Active Nodes / Servers</dt>
+<dt class="col-sm-4">Operating System</dt>
+<dd class="col-sm-8"><code>Linux</code></dd>
+<dt class="col-sm-4">Active Hosts</dt>
 <dd class="col-sm-8"><code>1</code></dd>
 <dt class="col-sm-4">AdminLTE Precompiled Version</dt>
 <dd class="col-sm-8"><code>3.2.0</code></dd>
-<dt class="col-sm-4">Cathook Version</dt>
-<dd class="col-sm-8"><code>0.0.0</code></dd>
-<dt class="col-sm-4">Express</dt>
-<dd class="col-sm-8"><code>0.0.0</code></dd>
+<dt class="col-sm-4">Panel Version</dt>
+<dd class="col-sm-8"><code><span id="ver2">0.0.0</span></code></dd>
 </dl>
 </div>
 </div>
-<div class="tab-pane fade" id="custom-tabs-2" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
-Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
 </div>
+<div class="tab-pane fade" id="custom-tabs-2" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+<div class="card card-primary card-outline">
+<div class="card-header">
+<h5 class="card-title m-0">Paths</h5>
+</div>
+<div class="card-body">
+<div class="alert alert-danger alert-dismissible">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<h5><i class="icon fas fa-exclamation-triangle"></i> Warning</h5>
+Changing any of the settings below will result in the server automatically stop and terminating bots in order to prevent corruption. If any of the value doesn't contain TF2 or Steam, the server will no longer work. Make sure if steam or TF2 is installed on the path.
+
+
+</div>
+
+<div class="form-group">
+<label for="exampleInputPassword1">Steam Library Path</label>
+<input type="password" class="form-control" id="lib_path" placeholder="/media/hdd1/steamapps">
+<small class="text-muted">If you plan to use a external HDD, specify that path. It's never a good idea to change the value to /opt/steamapps.</small>
+</div>
+
+<button type="submit" class="btn btn-primary">Save Changes</button>
+
+
+</div>
+</div>
+</div>
+<div class="tab-pane fade" id="custom-tabs-3" role="tabpanel" aria-labelledby="custom-tabs-mounts">
+  <div class="card card-primary card-outline">
+<div class="card-header">
+<h5 class="card-title m-0">Node List</h5>
+</div>
+
+        <table class="table table-hover text-nowrap" id="nodes">
+            <thead>
+            <tr id="spanfix">
+                <td scope="row"></td>
+                <td scope="row">Node ID</td>
+                <td scope="row">Node IP</td>
+                <td scope="row">Node Port</td>
+                <td scope="row">Node Service</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        </p>
+    </div>
+
+</div>
+
+
 </div>
 </div>
 
@@ -218,7 +274,7 @@ Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharet
     <strong>Cathook IPC Panel using <a href="https://adminlte.io">AdminLTE</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Admin Panel Version</b> 3.2.0
+      <b>Catwire</b> <span id="ver">Unknown</span>
     </div>
   </footer>
 </div>
@@ -235,8 +291,13 @@ Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharet
 <script src="/dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
-<script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script type="module" src="/plugins/bl/admin/server/server.js"></script>
+<script type="module" src="/plugins/bl/admin/nodes/nodes.js"></script>
 <script src="/plugins/toastr/toastr.min.js"></script>
+
+<!-- MISC PLUGIN -->
+<script src="/plugins/update/version.js"></script>
+
 <!-- jQuery Mapael -->
 <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="/plugins/raphael/raphael.min.js"></script>

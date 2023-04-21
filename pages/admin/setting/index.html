@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
@@ -145,8 +146,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
+          <!--
+          <h1 class="mt-3">Control Panel <small>.</small></h1> 
+          -->
             <h1 class="m-0">Control Panel</h1>
-            <p>Control your bots.</p>
+            <p>Control your own bots, edit quota and do administrative functions with your bots</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -173,7 +177,7 @@
 </li>
 
 <li class="nav-item">
-<a class="nav-link" id="custom-tabs-ipc" data-toggle="pill" href="#custom-tabs-2" role="tab" aria-controls="custom-tabs-ipc" aria-selected="false">IPC Settings</a>
+<a class="nav-link" id="custom-tabs-ipc" data-toggle="pill" href="#custom-tabs-2" role="tab" aria-controls="custom-tabs-ipc" aria-selected="false">IPC</a>
 </li>
 
 </ul>
@@ -183,7 +187,7 @@
 
 <div class="tab-content" id="custom-tabs-four-tabContent">
 <div class="tab-pane fade show active" id="custom-tabs-1" role="tabpanel" aria-labelledby="custom-tabs-bots">
-   <div class="card card-primary card-outline">
+<!--  <div class="card card-primary card-outline">
 <div class="card-header">
 <div class="card-tools">
 <div class="input-group input-group-sm" style="width: 30px;">
@@ -209,11 +213,37 @@
 
             </tbody>
         </table>
-        </p>
+    </div> -->
+
+<div class="card card-primary card-outline">
+<div class="card-header">
+<div class="card-tools">
+<div class="input-group input-group-sm" style="width: 30px;">
+
+</div>
+</div>
+<h3 class="card-title">All Bots</h3>
+</div> 
+        <table class="table table-hover text-nowrap" id="client_all">
+            <thead>
+            <tr id="spanfix">
+                <td scope="row">ID</td>
+                 <td scope="row">State</td>
+                 <td scope="row">IPC Status</td>
+                 <td scope="row">Process ID</td>
+                 <td scope="row">Actions</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
+    
 </dl>
 </div>
 <div class="tab-pane fade" id="custom-tabs-2" role="tabpanel" aria-labelledby="custom-tabs-ipc">
+
 <div class="card card-primary card-outline">
 <div class="card-header">
 <h5 class="m-0">IPC Settings</h5>
@@ -266,7 +296,7 @@
     <strong>Cathook IPC Panel using <a href="https://adminlte.io">AdminLTE</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Admin Panel Version</b> 3.2.0
+      <b>Catwire</b> <span id="ver">Unknown</span>
     </div>
   </footer>
 </div>
@@ -286,6 +316,9 @@
 <script src="/plugins/bl/admin/setting/bundle.js"></script>
 <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="/plugins/toastr/toastr.min.js"></script>
+<!-- MISC PLUGIN -->
+<script src="/plugins/update/version.js"></script>
+
 <!-- jQuery Mapael -->
 <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="/plugins/raphael/raphael.min.js"></script>
