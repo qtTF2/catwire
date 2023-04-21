@@ -11510,10 +11510,12 @@ function restartButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error restarting bot');
-			toastr.success('Failed to restart bot.');
+			//toastr.success('Failed to restart bot.');
+			new Swal({icon: "error", text: "Unable to restart this bot.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		} else {
 			status.info('Bot restarted');
-			toastr.success('Bot restarted.');
+			//toastr.success('Bot restarted.');
+			new Swal({icon: "success", text: "Bot restarted.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		}
 	});
 }
@@ -11524,10 +11526,12 @@ function restartAllButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error restarting bots');
-			toastr.error('Failed to restart all bots.');
+			//toastr.error('Failed to restart all bots.');
+			new Swal({icon: "success", text: "Unable to restart all bots.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		} else {
 			status.info('Bots restarted');
-			toastr.success('Restarted all bots.');
+			//toastr.success('Restarted all bots.');
+			new Swal({icon: "success", text: "Restarted all bots.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		}
 	});
 }
@@ -11538,10 +11542,11 @@ function terminateButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error terminating bot');
-			toastr.error('Unable to terminate.');
+			//toastr.error('Unable to terminate.');
+			new Swal({icon: "error", text: "Unable to terminate bot.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		} else {
 			status.info('Bot terminated');
-			toastr.success('Bot terminated.');
+			new Swal({icon: "success", text: "Bot terminated.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		}
 	});
 }
@@ -11552,10 +11557,13 @@ function terminateAllButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error terminating bots');
-			toastr.error('Failed to terminate all bots.');
+			//toastr.error('Failed to terminate all bots.');
+			new Swal({icon: "error", text: "Failed to terminate all bots.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 		} else {
 			status.info('Bots terminated');
-			toastr.success('Terminated all bots.');
+			//toastr.success('Terminated all bots.');
+			 new Swal({icon: "success", text: "Terminated all bots.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
+			
 		}
 	});
 }
@@ -11606,9 +11614,11 @@ function updateIPCData(row, id, data) {
 			    request(`/api/bot/${row.attr('data-id')}/restart`, function(e, r, b) {
 					if (e) {
 						console.log(e,b);
-						status.error('Error restarting bot ' + JSON.stringify(data));
+						status.error('Auto-restart: Error restarting bot ' + JSON.stringify(data));
+						new Swal({icon: "error", text: "Auto-restart: Unable to restart bot.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 					} else {
-						status.info('Bot restarted ' + JSON.stringify(data));
+						status.info('Auto-restart: Bot restarted ' + JSON.stringify(data));
+						new Swal({icon: "success", text: "Auto-restart: Bot restarted", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 					}
 				});
 			}
@@ -11742,10 +11752,12 @@ $(function() {
 			if (e) {
 				console.log(e, b);
 				status.error('Error applying bot quota!');
-				toastr.error('Failed to apply bot quota!');
+				//toastr.error('Failed to apply bot quota!');
+				new Swal({icon: "error", text: "Unable to apply bot quota.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 			} else {
 				status.info('Applied bot quota successfully');
-				toastr.success('Applied bot quota.');
+				//toastr.success('Applied bot quota.');
+				new Swal({icon: "success", text: "Applied bot quota.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 			}
 		});
 	});
