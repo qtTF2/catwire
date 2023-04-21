@@ -1,1 +1,1 @@
-var latestVersion = 0.5.2;
+var latestVersion = 0.5.3;
