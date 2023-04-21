@@ -11510,8 +11510,10 @@ function restartButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error restarting bot');
+			toastr.success('Failed to restart bot.');
 		} else {
 			status.info('Bot restarted');
+			toastr.success('Bot restarted.');
 		}
 	});
 }
@@ -11522,8 +11524,10 @@ function restartAllButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error restarting bots');
+			toastr.error('Failed to restart all bots.');
 		} else {
 			status.info('Bots restarted');
+			toastr.success('Restarted all bots.');
 		}
 	});
 }
@@ -11534,8 +11538,10 @@ function terminateButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error terminating bot');
+			toastr.error('Unable to terminate.');
 		} else {
 			status.info('Bot terminated');
+			toastr.success('Bot terminated.');
 		}
 	});
 }
@@ -11546,8 +11552,10 @@ function terminateAllButtonCallback() {
 		if (e) {
 			console.log(e,b);
 			status.error('Error terminating bots');
+			toastr.error('Failed to terminate all bots.');
 		} else {
 			status.info('Bots terminated');
+			toastr.success('Terminated all bots.');
 		}
 	});
 }
@@ -11680,6 +11688,7 @@ function addClientRow(botid) {
     //row.append($('<td></td>').attr('class', 'client-name active').text('N/A'));
     //row.append($('<td></td>').attr('class', 'client-uptime-server connected active').text('N/A'));
     $('#clients').append(row);
+    $('#client_all').append(row);
     return row;
 }
 
@@ -11690,8 +11699,9 @@ function runCommand() {
 
 function refreshComplete() {
 	$("#clients tr").slice(1).remove();
+	$("#client_all tr").slice(1).remove();
 	request.get({
-		url: '/api/list'
+		url: '/api/state'
 	}, function(e, r, b) {
 		if (e) {
 			console.log(e, b);
@@ -11702,9 +11712,16 @@ function refreshComplete() {
 		var b = JSON.parse(b);
 		console.log(b);
 		for (var i in b.bots) {
-			count++;
-			addClientRow(i)
-		}
+		count++;
+		//console.log(`Total bots:`, count)
+		//console.log(`${b.bots.b${count}.state}}`}
+		addClientRow(i)
+	        }
+	        
+		if (b.bots.b0.state == 5 && b.bots.b0.ipc) {
+		console.log('Client state was 5 or had an IPC assigned.')
+		addClientRow(i)
+	        }
 	
 		last_count = count;
 	})
@@ -11725,8 +11742,10 @@ $(function() {
 			if (e) {
 				console.log(e, b);
 				status.error('Error applying bot quota!');
+				toastr.error('Failed to apply bot quota!');
 			} else {
 				status.info('Applied bot quota successfully');
+				toastr.success('Applied bot quota.');
 			}
 		});
 	});

@@ -11504,54 +11504,6 @@ function commandButtonCallback() {
     }
 }
 
-function restartButtonCallback() {
-	console.log('restarting',$(this).parent().parent().attr('data-id'));
-    request(`/api/bot/${$(this).parent().parent().attr('data-id')}/restart`, function(e, r, b) {
-		if (e) {
-			console.log(e,b);
-			status.error('Error restarting bot');
-		} else {
-			status.info('Bot restarted');
-		}
-	});
-}
-
-function restartAllButtonCallback() {
-	console.log('restarting all bots');
-    request(`/api/bot/all/restart`, function(e, r, b) {
-		if (e) {
-			console.log(e,b);
-			status.error('Error restarting bots');
-		} else {
-			status.info('Bots restarted');
-		}
-	});
-}
-
-function terminateButtonCallback() {
-	console.log('terminating',$(this).parent().parent().attr('data-id'));
-    request(`/api/bot/${$(this).parent().parent().attr('data-id')}/terminate`, function(e, r, b) {
-		if (e) {
-			console.log(e,b);
-			status.error('Error terminating bot');
-		} else {
-			status.info('Bot terminated');
-		}
-	});
-}
-
-function terminateAllButtonCallback() {
-	console.log('restarting all bots');
-    request(`/api/bot/all/terminate`, function(e, r, b) {
-		if (e) {
-			console.log(e,b);
-			status.error('Error terminating bots');
-		} else {
-			status.info('Bots terminated');
-		}
-	});
-}
-
 function cmd(command, data, callback) {
 	request.post({
 		url: '/api/direct/' + command,
@@ -11642,12 +11594,6 @@ function updateIPCData(row, id, data) {
 		row.find('.connected').text('N/A');
 	}
 }
-		let user = document.getElementById("user");
-		user.textContent = "User"
-		
-		
-		let role = document.getElementById("role");
-		role.textContent = "Administrator";
 		
 
 function updateUserData(bot, data) {
@@ -11669,14 +11615,19 @@ function updateUserData(bot, data) {
 }
 
 
-/* Console Code */
-/*var datetime = new Date();
-document.getElementById("time").textContent = datetime.toLocaleTimeString();*/
 
-   function readTextFile(file)
+function addClientRow(botid) {
+    var row = $('<option></option>').attr('data-id', botid).text(botid);
+    $('#clients').append(row);
+    return row;
+}
+
+
+  function readTextFile(botid)
 {
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "/logs/b0.game.log", false);
+    if (!botid) botid = "b0";
+    rawFile.open("GET", `/logs/${botid}.game.log`, false);
     rawFile.onreadystatechange = function ()
     {
         if(rawFile.readyState === 4)
@@ -11684,12 +11635,6 @@ document.getElementById("time").textContent = datetime.toLocaleTimeString();*/
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var allText = rawFile.responseText;
-               //
-              /* var datetime = new Date();
-               var con = document.getElementById("line")textContent = allText;/               
-               /*con.innerHTML = `<span class="console-date">` + datetime.toLocaleTimeString()
-               con.innerHTML = `<span class="console-level-info">INFO </span>`*/
-               //con.innerHTML = `<span class="console-date">` + datetime.toLocaleTimeString() + `</span>` +  allTextv
                 var con = document.getElementById("line")
                 con.innerHTML = `<p class="inner-line">` + allText + `</p></div>`
                  
@@ -11698,50 +11643,33 @@ document.getElementById("time").textContent = datetime.toLocaleTimeString();*/
     }
     rawFile.send(null);
 }
-    setInterval(readTextFile, 1000);
+
+//hack 111
+window.onload = function() {
+  readTextFile(0)
+};
 
 
+$("#clients").change(function() {
+  var selectedItem = $(this).val();
+  var botid = $('option:selected',this).data("id");
+      setInterval(readTextFile(botid), 3000);
+});
 
-function addClientRow(botid) {
-    var row = $('<tr></tr>').attr('data-id', botid).addClass('disconnected stopped');
-    var actions = $('<td></td>').attr('class', 'client-actions');
-    actions.append($('<input>').attr('type', 'button').attr('value', 'Command').on('click', commandButtonCallback));
-    actions.append($('<input>').attr('type', 'button').attr('value', 'Restart').on('click', restartButtonCallback));
-    actions.append($('<input>').attr('type', 'button').attr('value', 'Terminate').on('click', terminateButtonCallback));
-    row.append(actions);
-	row.append($('<td></td>').attr('class', 'client-restarts').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-bot-name').text(botid));
-	row.append($('<td></td>').attr('class', 'client-state').text('UNDEFINED'));
-	row.append($('<td></td>').attr('class', 'client-steam').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-uptime-total active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-pid active').text('N/A'));
-	row.append($('<td></td>').attr('class', 'client-id active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-status active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-name active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-uptime-queue active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-total active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-score connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-shots active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-hitrate active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-hsrate active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-uptime-server connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-alive connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-team connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-class connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-health connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-ip connected active').text('N/A'));
-    row.append($('<td></td>').attr('class', 'client-map connected active').text('NYI'));
-    row.append($('<td></td>').attr('class', 'client-players connected active').text('NYI'));
-    row.append($('<td></td>').attr('class', 'client-bots connected active').text('NYI'));
-    $('#clients').append(row);
-    return row;
-}
+$('#console-button').click(function() {
+    var cmd_to_send = document.getElementById('console').value
+    if (!cmd_to_send) return toastr.error('Command field cannot be empty.');
+    var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
+
+cmd('exec', { target: botid, cmd: cmd_to_send });
+
+});
 
 
-function runCommand() {
+/*function runCommand() {
 	cmd('exec_all', { cmd: $('#console').val() });
 	$('#console').val('');
-}
+}*/
 
 function refreshComplete() {
 	$("#clients tr").slice(1).remove();
@@ -11755,7 +11683,6 @@ function refreshComplete() {
 		}
 		var count = 0;
 		var b = JSON.parse(b);
-		console.log(b);
 		for (var i in b.bots) {
 			count++;
 			addClientRow(i)
@@ -11767,11 +11694,15 @@ function refreshComplete() {
 
 $(function() {
 	updateData();
-    status.info('init done');
+    status.info('Updated data');
 	setInterval(updateData, 1000 * 2);
 	$('#console').on('keypress', function(e) {
 		if (e.keyCode == '13') {
-			runCommand();
+		var cmd_to_send = document.getElementById('console').value
+    		if (!cmd_to_send) return toastr.error('Command field cannot be empty.');
+    		var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
+    		console.log(botid)
+		cmd('exec', { target: botid, cmd: cmd_to_send });
 			e.preventDefault();
 		}
 	});
@@ -11796,10 +11727,7 @@ $(function() {
             console.log(b);
         });
     });
-	$('#bot-refresh').on('click', refreshComplete);
-	$('#console-send').on('click', runCommand);
-	$("#bot-restartall").on('click', restartAllButtonCallback);
-	$("#bot-terminateall").on('click', terminateAllButtonCallback);
+	//$('#console-send').on('click', runCommand);
 });
 
 },{"browser-request":2,"format-duration":3,"jquery":4}]},{},[6]);
