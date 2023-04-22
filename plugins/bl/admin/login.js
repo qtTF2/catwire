@@ -11449,8 +11449,12 @@ const request = require('browser-request');
                 password: password
             }
         }, (e, r, b) => {
-        if (r.statusCode == 403) return new swal({title: "Error", icon: "error", text: "Invaild password. Did you forgot your password?", timer: 3000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
-        if (r.statusCode == 200) return location.href = '/pages/admin';
+        if (r.statusCode == 403) return new swal({title: "Error", icon: "error", text: "Invaild password. Did you forget your password?", timer: 3000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
+        if (r.statusCode == 200) {
+        new swal({icon: "success", text: "Successful login.", timer: 3000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
+        location.href = '/pages/admin';
+        return
+        }
             /*console.log(r);
             console.log(e);
             console.log(b);*/
