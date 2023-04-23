@@ -11623,9 +11623,9 @@ function addClientRow(botid) {
 }
 
 
+    var rawFile = new XMLHttpRequest();
   function readTextFile(botid)
 {
-    var rawFile = new XMLHttpRequest();
     if (!botid) botid = "b0";
     rawFile.open("GET", `/logs/${botid}.game.log`, false);
     rawFile.onreadystatechange = function ()
@@ -11643,8 +11643,8 @@ function addClientRow(botid) {
     }
     rawFile.send(null);
 }
-var botid = document.getElementById("clients").value;
-      setInterval(readTextFile(botid), 2000);
+/*var botid = document.getElementById("clients").value;
+      setInterval(readTextFile(botid), 2000);*/
 
 //hack 111
 window.onload = function() {
@@ -11655,6 +11655,7 @@ window.onload = function() {
 $("#clients").change(function() {
   var selectedItem = $(this).val();
   var botid = $('option:selected',this).data("id");
+  readTextFile(botid)
       //setInterval(readTextFile(botid), 3000);
 });
 
@@ -11670,8 +11671,13 @@ $('#console-button').click(function() {
 
 
 function updateConsole() {
-	var botid = $('option:selected',this).data("id");
+	var botid = document.getElementById("clients").value;
 	readTextFile(botid)
+	/*if (rawFile.readyState == 200 || rawFile.readyState == 4) {
+	console.log('No change needed.')
+	console.log(rawFile)
+	return;
+        }*/
 }
 
 
@@ -11701,9 +11707,9 @@ $(function() {
     status.info('Updated data');
 	setInterval(updateData, 1000 * 2);
 	
-		updateConsole();
+	updateConsole();
     status.info('Updated console');
-	setInterval(updateConsole, 3000);
+	setInterval(updateConsole, 5000);
 	
 	$('#terminal_input').on('keypress', function(e) {
 		if (e.keyCode == '13') {
