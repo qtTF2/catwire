@@ -10,6 +10,8 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
 
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -38,7 +40,7 @@
         <a href="/pages/track" class="nav-link">Public Bot List</a>
       </li>
             <li class="nav-item d-none d-sm-inline-block">
-        <a href="/pages/admin/console" class="nav-link">Game Console</a>
+        <a class="nav-link">Game Console</a>
       </li>
     </ul>
 
@@ -81,11 +83,11 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-      <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+              <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Cathook Admin</span>
     </a>
 
-       <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -93,21 +95,12 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           </li>
-            <li class="nav-header">ADMINISTRATION</li>
+                    <li class="nav-header">ADMINISTRATION</li>
                               <li class="nav-item">
             <a href="/pages/admin/overview" class="nav-link">
-            <i class="nav-icon fas fa-home icon"></i>
+              <i class="nav-icon fas fa-home icon"></i>
               <p>
                 Overview
-              </p>
-            </a>
-          </li>
-          
-                                        <li class="nav-item">
-            <a href="/pages/admin/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt icon"></i>
-              <p>
-                Dashboard
               </p>
             </a>
           </li>
@@ -115,7 +108,7 @@
           <li class="nav-header">SETTINGS</li>
                               <li class="nav-item">
             <a href="/pages/admin/setting" class="nav-link">
-            <i class="nav-icon fas fa-database icon"></i>
+               <i class="nav-icon fas fa-database icon"></i>
               <p>
                 IPC Settings
               </p>
@@ -124,15 +117,14 @@
           
                                         <li class="nav-item">
             <a href="/pages/admin/setting/server" class="nav-link">
-               <i class="nav-icon fas fa-cog icon"></i>
+              <i class="nav-icon fas fa-cog icon"></i>
               <p>
                 Server Settings
               </p>
             </a>
           </li>
         
-        
-                  <li class="nav-header">LOGS</li>
+                          <li class="nav-header">LOGS</li>
                               <li class="nav-item">
             <a href="/pages/admin/logs/steam" class="nav-link">
             <i class="nav-icon fab fa-steam-symbol"></i>
@@ -167,8 +159,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Console</h1>
-            <p>Send source commands to a Cathook bot.</p>
+            <h1 class="m-0">Game Console</h1><small>Send source commands to a bot or all clients running on IPC.</small>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -183,40 +174,39 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
+     <div class="content-header">
 
 <div class="form-group">
 <label for="exampleSelectBorderWidth2">Client</label>
 <select class="custom-select form-control-border border-width-2" id="clients">
-<option disabled>Select one</option>
+<option disabled>Available Clients</option>
 </select>
  </div>
 
 
-   <div class="card card-primary card-outline">
+   <div class="card card-secondary card-outline">
 <div class="card-header">
-<div class="card-tools">
-<div class="input-group input-group-sm" style="width: 30px;">
-
-</div>
-</div>
-
-
-<h3 class="card-title">Console</h3>
-</div> 
 
 <div id="terminal">
-<pre style="color: rgb(255, 255, 255)" id="line"></span>
+<pre style="color: rgb(255, 255, 255)" class="cmd" id="line">
+</div>
 
-</div>
-</div>
 
 <div class="input-group">
-<input type="text" id="console" value="" class="form-control" data-focus="" placeholder="command for client">
-<span class="input-group-btn">
-<input class="btn btn-secondary rounded-0" type="submit" value="Send" id="console-button"></span>
+<input type="text" id="terminal_input" value="" class="form-control terminal_input--prompt" data-focus="" placeholder=" command for client">
+
+</div>
+
+<div class="card-tools">
+</div>
+</div> 
+
+
 </div>
 
     </div>
+    <br>
+     </div>
     
     </section>
     <!-- /.content -->
@@ -254,6 +244,7 @@
 <script src="/plugins/bl/admin/console/con.js"></script>
 <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="/plugins/toastr/toastr.min.js"></script>
+<script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 <!-- MISC PLUGIN -->
 <script src="/plugins/update/version.js"></script>
