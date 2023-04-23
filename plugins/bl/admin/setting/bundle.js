@@ -11686,6 +11686,7 @@ function addClientRow(botid) {
 	//row.append($('<td></td>').attr('class', 'client-steam').text('N/A'));
     //row.append($('<td></td>').attr('class', 'client-uptime-total active').text('N/A'));
         	    row.append($('<td></td>').attr('class', 'client-bot-name').text(botid));
+	            row.append($('<td></td>').attr('class', 'client-restarts').text('0'));
         	        	row.append($('<td></td>').attr('class', 'client-state').text('None'));
         	        	    row.append($('<td></td>').attr('class', 'client-status active').text('N/A'));
     row.append($('<td></td>').attr('class', 'client-pid active').text('0'));
