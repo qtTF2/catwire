@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cathook IPC: Administrator Overview</title>
+  <title>Cathook IPC | Overview</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -33,10 +33,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Public View</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/pages/admin/logs" class="nav-link">Logs</a>
+        <a href="/pages/track" class="nav-link">Public Bot List</a>
       </li>
             <li class="nav-item d-none d-sm-inline-block">
         <a href="/pages/admin/console" class="nav-link">Game Console</a>
@@ -81,20 +78,13 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/" class="brand-link">
+              <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Cathook Admin</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-          <b><a class="d-block"><span id="user"></span></a></b>
-          <a class="d-block">Role: <b><span id="role"></span></b>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -110,11 +100,10 @@
               </p>
             </a>
           </li>
-          
-          <li class="nav-header">SETTINGS</li>
+  <li class="nav-header">SETTINGS</li>
                               <li class="nav-item">
             <a href="/pages/admin/setting" class="nav-link">
-            <i class="nav-icon fas fa-server icon"></i>
+            <i class="nav-icon fas fa-database icon"></i>
               <p>
                 IPC Settings
               </p>
@@ -130,8 +119,26 @@
             </a>
           </li>
         
-         
-         
+        
+                  <li class="nav-header">LOGS</li>
+                              <li class="nav-item">
+            <a href="/pages/admin/logs/steam" class="nav-link">
+            <i class="nav-icon fab fa-steam-symbol"></i>
+              <p>
+                Steam Logs
+              </p>
+            </a>
+          </li>
+          
+          
+                                        <li class="nav-item">
+            <a href="/pages/admin/logs/server" class="nav-link">
+            <i class="nav-icon fas fa-server icon"></i>
+              <p>
+                Server Logs
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
