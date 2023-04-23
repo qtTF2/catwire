@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cathook IPC | Control Panel</title>
+  <title>Cathook IPC: Administrator Panel</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -33,7 +34,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/pages/track" class="nav-link">Public Bot Listw</a>
+        <a href="/pages/track" class="nav-link">Public Bot List</a>
       </li>
             <li class="nav-item d-none d-sm-inline-block">
         <a href="/pages/admin/console" class="nav-link">Game Console</a>
@@ -79,7 +80,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-                   <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+              <img src="/favicon.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Cathook Admin</span>
     </a>
 
@@ -97,6 +98,15 @@
               <i class="nav-icon fas fa-home icon"></i>
               <p>
                 Overview
+              </p>
+            </a>
+          </li>
+          
+                                                  <li class="nav-item">
+            <a href="/pages/admin/dashboard" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt icon"></i>
+              <p>
+                Dashboard
               </p>
             </a>
           </li>
@@ -120,8 +130,8 @@
             </a>
           </li>
         
-           
-                           <li class="nav-header">LOGS</li>
+        
+                          <li class="nav-header">LOGS</li>
                               <li class="nav-item">
             <a href="/pages/admin/logs/steam" class="nav-link">
             <i class="nav-icon fab fa-steam-symbol"></i>
@@ -132,7 +142,7 @@
           </li>
           
           
-           <li class="nav-item">
+                                        <li class="nav-item">
             <a href="/pages/admin/logs/server" class="nav-link">
             <i class="nav-icon fas fa-server icon"></i>
               <p>
@@ -140,7 +150,6 @@
               </p>
             </a>
           </li>
-         
          
          
         </ul>
@@ -160,8 +169,8 @@
           <!--
           <h1 class="mt-3">Control Panel <small>.</small></h1> 
           -->
-            <h1 class="m-0">Control Panel</h1>
-            <p>Manage your bots, modify IPC settings.</p>
+            <h1 class="mt-3">Control Panel</h1>
+            <small>Manage your bots and change IPC settings.</small> 
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -175,6 +184,7 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
+        <div class="content-header">
     <div class="card card-primary card-outline card-outline-tabs">
 <div class="card-header p-0 border-bottom-0">
 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
@@ -198,6 +208,34 @@
 
 <div class="tab-content" id="custom-tabs-four-tabContent">
 <div class="tab-pane fade show active" id="custom-tabs-1" role="tabpanel" aria-labelledby="custom-tabs-bots">
+<!--  <div class="card card-primary card-outline">
+<div class="card-header">
+<div class="card-tools">
+<div class="input-group input-group-sm" style="width: 30px;">
+
+<div class="input-group-append">
+<button type="button" class="btn btn-block btn-secondary btn-lg" id="bot-refresh"><i class="fa fa-sync"></i></button>
+</div>
+</div>
+</div>
+<h3 class="card-title">Existing Bots</h3>
+</div> 
+        <table class="table table-hover text-nowrap" id="clients">
+            <thead>
+            <tr id="spanfix">
+                <td scope="row">ID</td>
+                 <td scope="row">State</td>
+                 <td scope="row">IPC Status</td>
+                 <td scope="row">Process ID</td>
+                 <td scope="row">Actions</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div> -->
+
 <div class="card card-primary card-outline">
 <div class="card-header">
 <div class="card-tools">
@@ -233,10 +271,17 @@
 <div class="card-header">
 <h5 class="m-0">IPC Settings</h5>
         <div id="status" class="nohighlight">
-        <strong><span id="status-text">initializing</span></strong>
+        Status: <strong><span id="status-text">Initializing</span></strong>
         </div>
 </div>
 <div class="card-body">
+        <b>Send command to every client</b><br>
+        <div class="input-group">
+<input type="text" id="console" value="" class="form-control" data-focus="" placeholder="command for client">
+<span class="input-group-btn">
+<input class="btn btn-secondary rounded-0" type="submit" value="Send" id="console-send"></span>
+</div>
+<br>
         <b>Mass Actions</b><br>
                     <input class="btn btn-warning" type="button" id="bot-restartall" value="Restart All">
                      <input class="btn btn-danger" type="button" id="bot-terminateall" value="Terminate All"> 
@@ -281,7 +326,7 @@
     <strong>Cathook IPC Panel using <a href="https://adminlte.io">AdminLTE</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Catwire</b> <span id="ver">Unknown</span>
+      <b>Catwire</b> <span id="ver"><span id="ver2">Unknown</span>
     </div>
   </footer>
 </div>
