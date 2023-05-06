@@ -1,20 +1,21 @@
-# Catwire
+## Catwire
 A modern version of Cathook IPC built using AdminLTE (i was bored).
 
-# Warning
-`dist` folder doesnt contain full content of Modern Cathook Admin Panel please download it from AdminLTE for the full package (its mostly useless but im sure there some script that may require this panel to be usable with)
-
-# Features
+## Features
 * Admin login
 * Public bot tracking
-* Game console for seperate bot clients WiP
+* Game console for seperate bot clients
 * Admin overhaul for simplicity
 * Massive IPC settings overhaul
 * New server settings
+* Statistics for cathook IPC clients and server (coming soon)
+* Seperate node system for remote Cathook IPC server (coming soon)
 
-# WiP
-Panel is still in WiP and not final.
+## Support
+[This works on Internet Explorer and on other Chromium based browsers.](https://github.com/ColorlibHQ/AdminLTE#browsers-support)
 
+## Installing
+* Read the [wiki](https://github.com/qtTF2/catwire/wiki#welcome-to-the-catwire-wiki) for installing Catwire manually or use [catwire-installer](https://github.com/qtTF2/catwire-installer) to install it for you.
 
-# Info
-UI of Catwire (Modern Cathook IPC) were made with AdminLTE. If you plan to modify the source, please still give credits to original author (qt).
+## Credits
+User Interface of Catwire were made with [AdminLTE](https://github.com/ColorlibHQ/AdminLTE).
