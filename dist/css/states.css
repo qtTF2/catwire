@@ -1,0 +1,22 @@
+.disconnected .connected {
+    color: #a1aa95;
+}
+
+.stopped .active {
+    color: #a1aa95;
+}
+.error {
+    color: #9a3130;
+}
+
+.warning {
+    color: #dec300;
+}
+.team-red {
+    color: #B8383B;
+}
+
+.team-blu {
+    color: #5885A2;
+}
+
