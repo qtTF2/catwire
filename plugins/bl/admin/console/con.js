@@ -11673,6 +11673,10 @@ $('#console-button').click(function() {
 function updateConsole() {
 	var botid = document.getElementById("clients").value;
 	readTextFile(botid)
+	
+	var element = document.getElementById("terminal"); 
+        element.scrollTop = element.scrollHeight;
+	
 	/*if (rawFile.readyState == 200 || rawFile.readyState == 4) {
 	console.log('No change needed.')
 	console.log(rawFile)
@@ -11721,28 +11725,5 @@ $(function() {
 			e.preventDefault();
 		}
 	});
-	$('#bot-quota-apply').on('click', function() {
-		request.get('/api/quota/' + $('#bot-quota').val(), function(e, r, b) {
-			if (e) {
-				console.log(e, b);
-				status.error('Error applying bot quota!');
-			} else {
-				status.info('Applied bot quota successfully');
-			}
-		});
-	});
-    $('#api-login-button').on('click', () => {
-        let password = $('#api-password').val();
-        request.post({
-            uri: "/api/auth",
-            form: {
-                password: password
-            }
-        }, (e, r, b) => {
-            console.log(b);
-        });
-    });
-	//$('#console-send').on('click', runCommand);
 });
-
 },{"browser-request":2,"format-duration":3,"jquery":4}]},{},[6]);
