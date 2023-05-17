@@ -1,5 +1,7 @@
 const config = {
-    nodiscard: true
+    nodiscard: true,
+    steamPath: '',
+    gamePath: ''
 }
 
 module.exports = config;
