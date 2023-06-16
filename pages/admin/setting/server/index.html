@@ -213,17 +213,24 @@
 <div class="card-body">
 <div class="alert alert-danger alert-dismissible">
 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-<h5><i class="icon fas fa-exclamation-triangle"></i> Warning</h5>
-Changing any of the settings below will result in the server automatically stop and terminating bots in order to prevent corruption. If any of the value doesn't contain TF2 or Steam, the server will no longer work. Make sure if steam or TF2 is installed on the path.
+<h5><i class="icon fas fa-exclamation-triangle"></i>Warning</h5>
+Changing any of the settings below will result in the server automatically stop and terminating bots in order to prevent corruption. If any of the value doesn't contain TF2 or Steam, the server will no longer work.
 
 
 </div>
 
 <div class="form-group">
 <label for="exampleInputPassword1">Steam Library Path</label>
-<input type="password" class="form-control" id="lib_path" placeholder="/media/hdd1/steamapps">
-<small class="text-muted">If you plan to use a external HDD, specify that path. It's never a good idea to change the value to /opt/steamapps.</small>
+<input class="form-control" id="lib_path" placeholder="/media/hdd1/steamapps">
+<small class="text-muted">If you plan to make bots load steam library from an external source, specify that path. <b>This will create a symlink to /opt/steamapps</b>.</small>
 </div>
+
+<div class="form-group">
+<label for="exampleInputPassword1">User Instances</label>
+<input class="form-control" id="env_path" placeholder="/media/hdd2/user_instances">
+<small class="text-muted">If you plan to make the server store bot steam files on a different path, specify that path. <b>It will create a sandboxed enviroment for each bot you create. This might take up space from your disk.</b></small>
+</div>
+
 
 <button type="submit" class="btn btn-primary">Save Changes</button>
 
