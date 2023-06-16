@@ -8,7 +8,8 @@ const path = require("path");
 const { Tail } = require("tail");
 
 const accounts = require('./acc.js');
-const config = require('./config');
+const conf = require('./config');
+console.log(conf.config.gamePath)
 
 const LAUNCH_OPTIONS_STEAM = 'firejail --dns=1.1.1.1 %NETWORK% --noprofile --private="%HOME%" --name=%JAILNAME% --env=PULSE_SERVER="unix:/tmp/pulse.sock" --env=DISPLAY=%DISPLAY% --env=LD_PRELOAD=%LD_PRELOAD% %STEAM% -silent -login %LOGIN% %PASSWORD% -nominidumps -nobreakpad -no-browser -nofriendsui'
 const LAUNCH_OPTIONS_STEAM_RESET = 'firejail --net=none --noprofile --private="%HOME%" %STEAM% --reset'
@@ -49,6 +50,7 @@ function makeid(length) {
     return result;
 }
 
+//this function rarely but sometimes fails and prevents bots from starting up
 function clearSourceLockFiles() {
     var files = fs.readdirSync('/tmp/');
     files.forEach((str, index, arr) => {
