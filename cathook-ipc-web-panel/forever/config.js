@@ -2,6 +2,7 @@ const config = {
     nodiscard: true,
     steamPath: '',
     steamAppsPath: '',
+    userIntPath: '',
     gamePath: ''
 }
 
